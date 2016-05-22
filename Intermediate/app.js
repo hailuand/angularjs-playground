@@ -3,7 +3,7 @@
 
     var app = angular.module('app', []);
     // Attach books service to app module
-    app.provider('books', function(constants){
+    app.provider('books', ['constants', function(constants){
         this.$get = function(){
             var appName = constants.APP_TITLE;
             var appDescription = constants.APP_DESCRIPTION;
@@ -22,10 +22,10 @@
         this.setIncludeVersionInTitle = function(value){
             includeVersionInTitle = value;
         };
-    });
+    }]);
     // Angular appends 'provider' to all providers created
-    app.config(function(booksProvider, constants){
+    app.config(['booksProvider', 'constants', function(booksProvider, constants){
         booksProvider.setIncludeVersionInTitle(true);
         console.log('Title from constants service: ' + constants.APP_TITLE);
-    });
+    }]);
 })();
