@@ -1,0 +1,16 @@
+<div class="container">
+    <!-- Display countdown -->
+    {{ countdown }}
+    <form name="searchUser" ng-submit="search()">
+        <input type="search" required placeholder="Username to find" ng-model="username">
+        <input type="submit" value="Search">
+    </form>
+
+    Order by:
+    <select ng-model="repoSortOrder">
+        <option value="+name">Name</option>
+        <option value="-stargazers_count">Stargazer count</option>
+        <option value="+language">Language</option>
+    </select>
+
+</div>

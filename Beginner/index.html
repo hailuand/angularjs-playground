@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <meta charset="utf-8">
+        <title>Home</title>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+        <script type="text/javascript" src="https://code.angularjs.org/1.5.5/angular-route.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+        <script type="text/javascript" src="MainCtrl.js"></script>
+        <script type="text/javascript" src="github.js"></script>
+        <script type="text/javascript" src="UserCtrl.js"></script>
+        <script type="text/javascript" src="RepoCtrl.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+    </head>
+
+    <body>
+        <h1>Github Viewer</h1>
+        <!--  Set up shell for index.html-->
+        <div ng-view>
+            <!--  Templated pages will go inside here -->
+        </div>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!-- Javascript  -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="BooksController.js"></script>
+    <script type="text/javascript" src="services/dataService.js"></script>
+    <script type="text/javascript" src="services/loggerService.js"></script>
+    <script type="text/javascript" src="services/constantService.js"></script>
+    <script type="text/javascript" src="services/badgeService.js"></script>
+</head>
+<body>
+    <div ng-controller="BooksController as books">
+        <h1>Hello, {{ books.appName }}!</h1>
+        <h3>All Books</h3>
+        <div>
+            <ul>
+                <li ng-repeat="book in books.allBooks">
+                    {{ book.title }} - {{ book.author }}
+                </li>
+            </ul>
+        </div>
+
+        <h3>All Readers</h3>
+        <div>
+            <ul>
+                <li ng-repeat="reader in books.allReaders">
+                    {{ reader.name }} - {{ books.getBadge(reader.totalMinutesRead) }}
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
