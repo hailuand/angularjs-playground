@@ -1,31 +1,33 @@
-(function(){
-    'use strict';
+(function () {
+  'use strict';
 
-    var app = angular.module('app', []);
+  const app = angular.module('app', []);
     // Attach books service to app module
-    app.provider('books', ['constants', function(constants){
-        this.$get = function(){
-            var appName = constants.APP_TITLE;
-            var appDescription = constants.APP_DESCRIPTION;
+  app.provider('books', ['constants', function booksProvder(constants) {
+    let includeVersionInTitle = false;
 
-            if(includeVersionInTitle){
-                appName += ' ' + constants.APP_VERSION;
-            }
+    this.$get = function get() {
+      let appName = constants.APP_TITLE;
+      const appDescription = constants.APP_DESCRIPTION;
 
-            return{
-                appName: appName,
-                appDescription: appDescription
-            };
-        };
 
-        var includeVersionInTitle = false;
-        this.setIncludeVersionInTitle = function(value){
-            includeVersionInTitle = value;
-        };
-    }]);
+      if (includeVersionInTitle) {
+        appName += ` ${constants.APP_VERSION}`;
+      }
+
+      return {
+        appName: appName,
+        appDescription: appDescription
+      };
+    };
+
+    this.setIncludeVersionInTitle = function setIncludeVersionInTitle(value) {
+      includeVersionInTitle = value;
+    };
+  }]);
     // Angular appends 'provider' to all providers created
-    app.config(['booksProvider', 'constants', function(booksProvider, constants){
-        booksProvider.setIncludeVersionInTitle(true);
-        console.log('Title from constants service: ' + constants.APP_TITLE);
-    }]);
+  app.config(['booksProvider', 'constants', function appSetup(booksProvider, constants) {
+    booksProvider.setIncludeVersionInTitle(true);
+    console.log('Title from constants service: ' + constants.APP_TITLE);
+  }]);
 })();
